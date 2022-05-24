@@ -2,10 +2,14 @@ package com.example.autowala;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,6 +47,8 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
     private AppBarConfiguration mAppBarConfiguration;
     private GoogleMap mMap;
 
+    EditText selectPick, selectDest;
+
 
 //    String Appid = "autowala-uoqmy";
 //    private App app;
@@ -51,7 +57,7 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
 //    MongoDatabase mongoDatabase;
 //    MongoClient mongoClient;
 
-    Button button;
+    Button submitDest;
     TextView textView3;
     TextView username;
 
@@ -79,6 +85,8 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 
         username = (TextView) findViewById(R.id.userName);
+        selectPick = (EditText) findViewById(R.id.selectPick);
+        selectDest = (EditText) findViewById(R.id.selectDest);
 
 //        buttonPickup.setVisibility(View.VISIBLE);
 //        buttonDestination.setVisibility(View.VISIBLE);
@@ -98,6 +106,105 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
 //                        textView3.setText("Not Found!");
 //                    }
 //                });
+//            }
+//        });
+
+
+
+        selectPick.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Creating the instance of PopupMenu
+                PopupMenu popup = new PopupMenu(HomeActivity.this, selectPick);
+                //Inflating the Popup using xml file
+                popup.getMenuInflater()
+                        .inflate(R.menu.popup_menu, popup.getMenu());
+
+                //registering popup with OnMenuItemClickListener
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    public boolean onMenuItemClick(MenuItem item) {
+//                        Toast.makeText(
+//                                HomeActivity.this,
+//                                "You Clicked : " + item.getTitle(),
+//                                Toast.LENGTH_SHORT
+//                        ).show();
+                        selectPick.setText(item.getTitle());
+                        return true;
+                    }
+                });
+
+                popup.show(); //showing popup menu
+            }
+        });
+
+        selectDest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Creating the instance of PopupMenu
+                PopupMenu popup = new PopupMenu(HomeActivity.this, selectDest);
+                //Inflating the Popup using xml file
+                popup.getMenuInflater()
+                        .inflate(R.menu.popup_menu, popup.getMenu());
+
+                //registering popup with OnMenuItemClickListener
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    public boolean onMenuItemClick(MenuItem item) {
+//                        Toast.makeText(
+//                                HomeActivity.this,
+//                                "You Clicked : " + item.getTitle(),
+//                                Toast.LENGTH_SHORT
+//                        ).show();
+                        selectDest.setText(item.getTitle());
+                        return true;
+                    }
+                });
+
+                popup.show(); //showing popup menu
+            }
+        });
+
+
+        submitDest = (Button) findViewById(R.id.submitDest);
+
+        submitDest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(HomeActivity.this, "Searching for Available Auto-rickshaws...", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+//        selectDest.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//                PopupMenu popup = new PopupMenu(HomeActivity.this, selectDest);
+//                //Inflating the Popup using xml file
+//                popup.getMenuInflater()
+//                        .inflate(R.menu.popup_menu, popup.getMenu());
+//
+//                //registering popup with OnMenuItemClickListener
+//                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+//                    public boolean onMenuItemClick(MenuItem item) {
+////                        Toast.makeText(
+////                                HomeActivity.this,
+////                                "You Clicked : " + item.getTitle(),
+////                                Toast.LENGTH_SHORT
+////                        ).show();
+//                        selectDest.setText(item.getTitle());
+//                        return true;
+//                    }
+//                });
+//
+//                popup.show();
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//
 //            }
 //        });
 

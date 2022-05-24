@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/one"
+        android:title="Akash Hostel"/>
+
+    <item
+        android:id="@+id/two"
+        android:title="Brahmos Hostel"/>
+
+    <item
+        android:id="@+id/four"
+        android:title="Surya Hostel"/>
+    <item
+        android:id="@+id/five"
+        android:title="Bhaskar Hostel"/>
+    <item
+        android:id="@+id/six"
+        android:title="Agni Hostel"/>
+    <item
+        android:id="@+id/seven"
+        android:title="Rohini Hostel"/>
+    <item
+        android:id="@+id/eight"
+        android:title="Prithvi Hostel"/>
+    <item
+        android:id="@+id/ten"
+        android:title="IGIT Main Gate"/>
+    <item
+        android:id="@+id/eleven"
+        android:title="IGIT Old Building"/>
+    <item
+        android:id="@+id/twelve"
+        android:title="IGIT Guest House"/>
+    <item
+        android:id="@+id/thirteen"
+        android:title="IGIT Auto-rickshaw Stand"/>
+    <item
+        android:id="@+id/fourteen"
+        android:title="Durga Hotel"/>
+    <item
+        android:id="@+id/fifteen"
+        android:title="Talcher Road Railway Station"/>
+    <item
+        android:id="@+id/sixteen"
+        android:title="Thermal Railway Station"/>
+    <item
+        android:id="@+id/seventeen"
+        android:title="Anugul"/>
+    <item
+        android:id="@+id/eighteen"
+        android:title="Balhar Chowk"/>
+    <item
+        android:id="@+id/ninteen"
+        android:title="Surya Garden"/>
+</menu>
