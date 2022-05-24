@@ -2,19 +2,24 @@ package com.example.autowala;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.annotation.NonNull;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -33,10 +38,11 @@ import io.realm.mongodb.mongo.MongoClient;
 import io.realm.mongodb.mongo.MongoCollection;
 import io.realm.mongodb.mongo.MongoDatabase;
 
-public class HomeActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class HomeActivity extends AppCompatActivity implements OnMapReadyCallback  {
 
     private AppBarConfiguration mAppBarConfiguration;
     private GoogleMap mMap;
+
 
 //    String Appid = "autowala-uoqmy";
 //    private App app;
@@ -54,8 +60,14 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+
+
         SupportMapFragment supportMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         supportMapFragment.getMapAsync(this);
+
+//        if (getSupportActionBar() != null) {
+//            getSupportActionBar().hide();
+//        }
 
 //        Realm.init(this);
 //        app = new App(new AppConfiguration.Builder(Appid).build());
@@ -68,6 +80,8 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         username = (TextView) findViewById(R.id.userName);
 
+//        buttonPickup.setVisibility(View.VISIBLE);
+//        buttonDestination.setVisibility(View.VISIBLE);
 
 //        button.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -90,14 +104,14 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+//        FloatingActionButton fab = findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+//            }
+//        });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
@@ -128,6 +142,14 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void onMapReady(GoogleMap googleMap)
     {
         mMap = googleMap;
+        // Add a marker in Sydney and move the camera
+        LatLng sarang = new LatLng(20.936009, 85.261085);
+        mMap.addMarker(new MarkerOptions().position(sarang).title("Marker in Sarang"));
+
+        float zoomLevel = 16.0f; //This goes up to 21
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sarang, zoomLevel));
+
     }
+
 
 }

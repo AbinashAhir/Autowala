@@ -312,10 +312,10 @@ public class PhoneLoginActivity extends AppCompatActivity implements GoogleApiCl
                         else{
                             Toast.makeText(PhoneLoginActivity.this, "Login Failed.", Toast.LENGTH_SHORT).show();
 
-                            Intent intent = new Intent(PhoneLoginActivity.this, LoginActivity.class);
+                            Intent intent = new Intent(PhoneLoginActivity.this, CreateProfileActivity.class);
                             startActivity(intent);
-                            finish();
-                            Animatoo.animateSlideRight(PhoneLoginActivity.this);
+//                            finish();
+//                            Animatoo.animateSlideRight(PhoneLoginActivity.this);
                         }
                     }
                 });
